@@ -1,5 +1,7 @@
 {
   "name": "myshoplist-ionic-side",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

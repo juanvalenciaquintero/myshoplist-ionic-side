@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,7 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     StatusBar,
     SplashScreen,
+    AndroidFingerprintAuth,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+
   ],
   bootstrap: [AppComponent]
 })

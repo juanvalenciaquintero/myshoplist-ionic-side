@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Myshoplist
+      <ion-icon class="icono ion-float-right" name="refresh"  (click)='doRefresh($event);'></ion-icon>
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="barraPrincipal">
+    <div id="formulario">
+      <input type="text" id="artic" name="artic" (keyup)='checkArt($event)'>
+      <button id="btnAdd" (click)="addArticleDesp();">Añadir</button>
+      <div #listaArticulos *ngIf="visible" class="visible">
+        <div *ngFor="let encontrado of lista" (click)="selectArt($event);" > {{encontrado}} </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tablaArticulos">
+    <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr *ngFor="let articulo of articulos; let odd = odd" [ngClass]="{odd:odd}">
+          <td>
+            <ion-icon class="icono" name="redo" (click)='itemPurchased(articulo.id)'></ion-icon>
+          </td>
+          <td>{{ articulo.name }}</td>
+          <td>{{ articulo.cantidad }}</td>
+          <td><ion-icon class="icono" name="close-circle" (click)="deleteArtUnic(articulo.id,articulo.name);"></ion-icon></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="comprados">
+      <ion-icon class="icono" name="close-circle" (click)="deleteArt();"></ion-icon>
+      <h2>Artículos comprados</h2>
+    </div>
+    <table class="table table-striped tabla_principal" id="articulosComp" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr *ngFor="let articulo of articulosComp; let odd = odd" [ngClass]="{odd:odd}">
+          <td>
+            <ion-icon class="icono" name="undo" (click)='returnItemPurchased(articulo.id_articulo)'></ion-icon>
+          </td>
+          <td>{{ articulo.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</ion-content>

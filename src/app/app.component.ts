@@ -4,6 +4,10 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth/ngx';
+
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,42 +17,34 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Lista',
+      url: '/home',
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Despensa',
+      url: '/despensa',
+      icon: 'cart'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Historico',
+      url: '/historico-articulos',
+      icon: 'list'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Usuario',
+      url: '/user',
+      icon: 'person'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    public androidFingerprintAuth: AndroidFingerprintAuth
   ) {
     this.initializeApp();
   }
@@ -57,6 +53,45 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.androidFingerprintAuth.isAvailable().then(
+        (result) =>
+        {
+          if (result.isAvailable)
+          {
+            this.androidFingerprintAuth.encrypt({ clientId: "clienteid", username: "username", password: "password" }).then((result) =>
+            {
+              if (result.withFingerprint)
+              {
+                // alert("Successfully authenticated with fingerprint");
+                // alert("Encrypt credentials: " + result.token);
+                this.router.navigate(['/home']);
+              } else if (result.withBackup)
+              {
+                // alert("Succesfully authenticated with backup password");
+                this.router.navigate(['/home']);
+              } else
+              {
+               alert("Didnot authenticate!");
+              }
+            }, (err) =>
+            {
+                if (err === this.androidFingerprintAuth.ERRORS.FINGERPRINT_CANCELLED)
+                {
+                  alert("Fingerprint authentication cancelled");
+                }
+                else
+                {
+                  alert(JSON.stringify(err));
+                }
+            })
+          } else
+          {
+            alert("Fingerprint authentication not available");
+          }
+        }, (err) =>
+    {
+        alert(JSON.stringify(err));
+    })
     });
   }
 
