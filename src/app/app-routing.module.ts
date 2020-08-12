@@ -31,12 +31,12 @@ const routes: Routes = [
     canActivate: [LoggedGuard]
 
   },
-  // {
-  //   path: 'editar/:id',
-  //   loadChildren: () => import('./editar-articulo/editar-articulo.module').then( m => m.EditarArticuloPageModule),
-  //   canActivate: [LoggedGuard]
+  {
+    path: 'editar/:id',
+    loadChildren: () => import('./editar-articulo/editar-articulo.module').then( m => m.EditarArticuloPageModule),
+    canActivate: [LoggedGuard]
 
-  // },
+  },
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then( m => m.UserPageModule),

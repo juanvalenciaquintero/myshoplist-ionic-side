@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Editar artículo de la despensa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="articulo" id="articuloDespensa">
+    <div>
+      <span>Artículo:</span> <input type="text"  [(ngModel)]="articulo.name" value="{{articulo.name}}">
+    </div>
+    <div>
+      <span>Marca:</span> <input type="text" [(ngModel)]="articulo.brand" value="{{articulo.brand}}">
+    </div>
+    <div>
+      <span>Supermercado:</span> <input type="text" [(ngModel)]="articulo.supermarket" value="{{articulo.supermarket}}">
+    </div>
+    <div>
+      <span>Precio:</span> <input type="text" [(ngModel)]="articulo.price" value="{{articulo.price}}">
+    </div>
+    <div>
+      <span>Fecha de alta:</span> <input type="date" [(ngModel)]="articulo.fecha" value="{{articulo.fecha}}">
+    </div>
+    <div>
+      <span>Pasillo:</span> <input type="text" [(ngModel)]="articulo.pasillo" value="{{articulo.pasillo}}">
+    </div>
+
+  </div>
+  <div id="botones">
+    <button id="cancelar" (click)="volver();">Cancelar</button>
+    <button id="actualizar" (click)="actualizar(articulo);" >Actualizar</button>
+  </div>
+<!-- Artículo:{{articulo.name}} -->
+<!-- <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr *ngFor="let articulo of articulosDespensa; let odd = odd" [ngClass]="{odd:odd}">
+     <td><ion-icon class="icono" name="close-circle" ></ion-icon></td>
+    <td><a routerLink="/editar/{{articulo.id}}"><ion-icon class="icono" name="create" ></ion-icon></a></td>
+    <td>{{ articulo.name }}</td>
+  </tr>
+</tbody>
+</table> -->
+</ion-content>

@@ -12,6 +12,7 @@ export class HistoricoArticulosPage implements OnInit
 {
 
   listas: any;
+  artículos
   backButtonSubscription;
 
   constructor(public taskService: TaskService,private platform: Platform,private router: Router) { }
