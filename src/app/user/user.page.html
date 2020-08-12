@@ -1,9 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user</ion-title>
+  <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div id="datosUsuario" *ngIf="user">
+    <span>Usuario</span>
+    <input type="text" [(ngModel)]="user.nombre">
+  </div>
+  <div id="botones">
 
+
+    <button id="actualizar" (click)="actualizar(user);" >Actualizar</button>
+    <button id="newPass" (click)="newPass();">Nueva contraseña</button>
+    <button id="desloguear" (click)="desloguear();">Desconectar</button>
+  </div>
+  <div id="newPassword" *ngIf="newPassword">
+    <div>
+      <span>Contraseña actual</span>
+      <input type="password">
+    </div>
+    <div>
+      <span>Nueva Contraseña</span>
+      <input type="password" [(ngModel)]="password1">
+    </div>
+    <div>
+      <span>Repite la contraseña</span>
+      <input type="password" [(ngModel)]="password2">
+    </div>
+    <div>
+    <button id="grabarPass" (click)="updatePass();">Grabar contraseña nueva</button>
+    </div>
+  </div>
 </ion-content>

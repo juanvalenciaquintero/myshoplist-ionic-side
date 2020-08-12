@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>despensa</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Despensa
+      <ion-icon name="add-circle" class="icono ion-float-right" [routerDirection]="'root'" [routerLink]="['/nuevo-articulo']"></ion-icon>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div id="tablaDespensa">
+    <table class="table table-striped tabla_principal" id="articulosDesp" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr *ngFor="let articulo of articulosDespensa; let odd = odd" [ngClass]="{odd:odd}">
+
+         <td><a routerLink="/editar/{{articulo.id}}"><ion-icon class="icono" name="create" (click)='editar(articulo.id);'></ion-icon></a></td>
+         <td>{{ articulo.name }}</td>
+         <td>{{ articulo.pasillo }}</td>
+         <td><ion-icon class="icono" name="close-circle" (click)='borrar(articulo.id);'></ion-icon></td>
+      </tr>
+    </tbody>
+    </table>
+
+  </div>
 
 </ion-content>

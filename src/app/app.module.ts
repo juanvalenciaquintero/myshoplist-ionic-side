@@ -11,17 +11,27 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth/ngx';
 
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
+import { StorageService } from './services/storage.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    StorageService,
+    AuthService,
+    AuthGuard,
     AndroidFingerprintAuth,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 

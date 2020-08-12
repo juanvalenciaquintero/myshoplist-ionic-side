@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Myshoplist login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div id="loginContainer">
+  <div id="userContainer">
+    <!-- <div>
+      <span>Usuario</span>
+    </div> -->
+    <div>
+    <input type="text" id="user" name="user" placeholder="Usuario" [(ngModel)]="user">
+    </div>
+  </div>
+  <div id="passContainer">
+    <!-- <div>
+      <span>Password</span>
+    </div> -->
+    <div>
+      <input type="password" id="pass" name="pass" placeholder="Password" [(ngModel)]="pass">
+    </div>
+  </div>
+</div>
+<!-- <div id="remember">
+  <input type="checkbox" id="chkRemember"   >Recordar
+</div> -->
+<div id="botonesLogin">
+  <button id="btnLogin" (click)='checklogin();'>Acceder</button>
+</div>
+
+</ion-content>

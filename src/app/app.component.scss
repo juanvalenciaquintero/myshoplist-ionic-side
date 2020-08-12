@@ -1,119 +1,276 @@
-ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+#barraPrincipal
+{
+  box-sizing: border-box;
+  height:41px;
+  width:100%;
+  background-color: #ccc;
+  padding:6px;
+  /* display:flex;
+  align-items: center;
+  justify-content: center; */
 }
 
-ion-menu.md ion-content {
-  --padding-start: 8px;
-  --padding-end: 8px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+#loginContainer
+{
+  width:70%;
+  margin:50px auto;
+  height:150px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom:10px;
 }
 
-ion-menu.md ion-list {
-  padding: 20px 0;
+#userContainer, #passContainer
+{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#userContainer div, #passContainer div, #userContainer span, #passContainer span
+{
+  width:100%;
 }
 
-ion-menu.md ion-note {
-  margin-bottom: 30px;
+
+#userContainer input, #passContainer input
+{
+  width:100%;
 }
 
-ion-menu.md ion-list-header,
-ion-menu.md ion-note {
-  padding-left: 10px;
+
+#userContainer>div, #passContainer>div
+{
+  text-align: center;
 }
 
-ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
+#remember
+{
+ width:70%;
+ margin:0 auto;
+ margin-bottom: 30px;
 }
 
-ion-menu.md ion-list#inbox-list ion-list-header {
-  font-size: 22px;
-  font-weight: 600;
+#formulario
+{
+  box-sizing: border-box;
+  width:235px;
+  margin:0 auto;
 
-  min-height: 20px;
+  /* display:flex;
+  align-items: center;
+  justify-content: center; */
 }
 
-ion-menu.md ion-list#labels-list ion-list-header {
-  font-size: 16px;
-
-  margin-bottom: 18px;
-
-  color: #757575;
-
-  min-height: 26px;
+#articulos, #articulosComp, #articulosDesp
+{
+  width:100%;
 }
 
-ion-menu.md ion-item {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border-radius: 4px;
+#formulario input
+{
+  padding:0;
+  height:30px;
+  width:175px;
 }
 
-ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+
+#tablaArticulos
+{
+  margin:0 auto;
+  width: 100%;
 }
 
-ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+#articulos tr, #tablaDespensa tr, #articulosDesp tr
+{
+  height:40px;
+ // border: 1px solid;
 }
 
-ion-menu.md ion-item ion-icon {
-  color: #616e7e;
+#articulos td:first-child, #articulosComp td:first-child, #articulosDesp td:first-child,  #articulos td:last-child, #articulosDesp td:last-child
+{
+  width:40px;
 }
 
-ion-menu.md ion-item ion-label {
-  font-weight: 500;
+
+#articulos td, #articulosComp td, #tablaDespensa td
+{
+  border-collapse: collapse;
+  padding:10px 15px;
 }
 
-ion-menu.ios ion-content {
-  --padding-bottom: 20px;
+#articulosDesp a
+{
+  color:black;
 }
 
-ion-menu.ios ion-list {
-  padding: 20px 0 0 0;
+#listaArticulos
+{
+position:absolute;
+top:100px;
 }
 
-ion-menu.ios ion-note {
-  line-height: 24px;
+#btnAdd
+{
+  height:29px;
+  border: 1px solid #aaa;
+}
+
+.icono
+{
+  width:25px;
+  height:25px;
+}
+
+.btnComp
+{
+  height:18px;
+  border: 1px solid #aaa;
+  border-radius: 5px 5px;;
+}
+
+#user, #pass
+{
+  height:35px;
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+
+#btnEdit
+{
+  width:18px;
+}
+
+#btnDelete
+{
+  width:18px;
+}
+
+#comprados
+{
+  border-top: 1px solid #ccc;
+  margin-top:15px;
+}
+
+h2
+{
+  padding:10px;
+  width:85%;
+  display:inline-block;
+}
+
+.oculto
+{
+  display:none;
+}
+
+.visible
+{
+  width:100%;
+
+  z-index:10;
+  left:0;
+  display:block;
+  border:1px solid #ccc;
+  background-color:#ececec;
+  position: absolute;
+  cursor:pointer;
+  border-radius: 0 0 5px 5px;
+}
+
+.visible div
+{
+  padding:12px 10px;
+  height:40px;
+}
+
+.visible div:hover
+{
+  background-color:#222;
+  color:white;
+}
+
+.odd
+{
+  background-color: rgb(232, 235, 236);
+}
+
+#articuloDespensa, #nuevoArticuloDespensa
+{
+  width:90%;
+  margin: 0 auto;
+  padding:10px;
   margin-bottom: 20px;
 }
 
-ion-menu.ios ion-item {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --min-height: 50px;
+#articuloDespensa div, #nuevoArticuloDespensa div
+{
+  padding:5px;
+  height:60px;
 }
 
-ion-menu.ios ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+#articuloDespensa span, #nuevoArticuloDespensa span
+{
+  display:inline-block;
+  width:25%;
+  min-width:110px;
 }
 
-ion-menu.ios ion-item ion-icon {
-  font-size: 24px;
-  color: #73849a;
+#articuloDespensa input, #nuevoArticuloDespensa input
+{
+  width:70%;
 }
 
-ion-menu.ios ion-list#labels-list ion-list-header {
-  margin-bottom: 8px;
+#botones, #botonesLogin
+{
+  width:100%;
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-ion-menu.ios ion-list-header,
-ion-menu.ios ion-note {
-  padding-left: 16px;
-  padding-right: 16px;
+#botones button, #botonesLogin #btnLogin, #grabarPass
+{
+  width:100px;
+  height:40px;
+  border-radius: 3px;
+  font-size:15px;
 }
 
-ion-menu.ios ion-note {
-  margin-bottom: 8px;
+ #grabarPass
+ {
+ width:200px;
+ }
+
+#datosUsuario
+{
+  margin:20px auto;
+  padding:10px;
 }
 
-ion-note {
-  display: inline-block;
-  font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
+#datosUsuario span
+{
+margin-right:10px;
 }
 
-ion-item.selected {
-  --color: var(--ion-color-primary);
+#datosUsuario input
+{
+  padding:5px;
+  height:30px;
+}
+
+#newPassword
+{
+  margin-top: 20px;
+}
+#newPassword div
+{
+  padding:10px;
+}
+#newPassword div span, #newPassword div input
+{
+  display:inline-block;
+  min-width:150px;
 }
