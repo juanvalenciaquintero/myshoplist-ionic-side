@@ -53,45 +53,45 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.androidFingerprintAuth.isAvailable().then(
-        (result) =>
-        {
-          if (result.isAvailable)
-          {
-            this.androidFingerprintAuth.encrypt({ clientId: "clienteid", username: "username", password: "password" }).then((result) =>
-            {
-              if (result.withFingerprint)
-              {
-                // alert("Successfully authenticated with fingerprint");
-                // alert("Encrypt credentials: " + result.token);
-                this.router.navigate(['/home']);
-              } else if (result.withBackup)
-              {
-                // alert("Succesfully authenticated with backup password");
-                this.router.navigate(['/home']);
-              } else
-              {
-               alert("Didnot authenticate!");
-              }
-            }, (err) =>
-            {
-                if (err === this.androidFingerprintAuth.ERRORS.FINGERPRINT_CANCELLED)
-                {
-                  alert("Fingerprint authentication cancelled");
-                }
-                else
-                {
-                  alert(JSON.stringify(err));
-                }
-            })
-          } else
-          {
-            alert("Fingerprint authentication not available");
-          }
-        }, (err) =>
-    {
-        alert(JSON.stringify(err));
-    })
+    //   this.androidFingerprintAuth.isAvailable().then(
+    //     (result) =>
+    //     {
+    //       if (result.isAvailable)
+    //       {
+    //         this.androidFingerprintAuth.encrypt({ clientId: "clienteid", username: "username", password: "password" }).then((result) =>
+    //         {
+    //           if (result.withFingerprint)
+    //           {
+    //             // alert("Successfully authenticated with fingerprint");
+    //             // alert("Encrypt credentials: " + result.token);
+    //             this.router.navigate(['/home']);
+    //           } else if (result.withBackup)
+    //           {
+    //             // alert("Succesfully authenticated with backup password");
+    //             this.router.navigate(['/home']);
+    //           } else
+    //           {
+    //            alert("Didnot authenticate!");
+    //           }
+    //         }, (err) =>
+    //         {
+    //             if (err === this.androidFingerprintAuth.ERRORS.FINGERPRINT_CANCELLED)
+    //             {
+    //               alert("Fingerprint authentication cancelled");
+    //             }
+    //             else
+    //             {
+    //               alert(JSON.stringify(err));
+    //             }
+    //         })
+    //       } else
+    //       {
+    //         alert("Fingerprint authentication not available");
+    //       }
+    //     }, (err) =>
+    // {
+    //     alert(JSON.stringify(err));
+    // })
     });
   }
 

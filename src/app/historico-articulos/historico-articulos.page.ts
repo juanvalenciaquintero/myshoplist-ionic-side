@@ -33,6 +33,11 @@ export class HistoricoArticulosPage implements OnInit
       );
   }
 
+  historico(fecha): void
+  {
+    console.log(fecha);
+  }
+
   ngAfterViewInit()
   {
     this.backButtonSubscription = this.platform.backButton.subscribe(()=>

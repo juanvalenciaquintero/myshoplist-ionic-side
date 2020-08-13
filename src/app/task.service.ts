@@ -347,4 +347,9 @@ export class TaskService {
     let path = 'http://juanvalencia.x10host.com/articulos/addArticle/';
     return this.http.get(path + articulo);
   }
+
+  getArticlesHistory(fecha)
+  {
+     return this.http.get(this.url + '/myshoplist.php?valor=8&fecha=' + fecha);
+  }
 }

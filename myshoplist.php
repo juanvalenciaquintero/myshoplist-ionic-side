@@ -299,4 +299,20 @@ echo json_encode($datos);
 }
 
 
+  if ((isset($_GET['valor'])) && ($_GET['valor']==='8'))
+  {
+    $originalDate = $_GET['fecha'];
+    $newDate = date("Y-m-d", strtotime($originalDate));
+    $sql = mysqli_query($db,"SELECT distinct(ac.id_articulo),  ac.cantidad , ad.name FROM articulos_comprados ac, articulos_despensa ad WHERE ac.id_articulo = ad.id and fecha_compra between '" . $newDate  . " 00:00:00' AND '" . $newDate  . " 23:59:59'");
+    $datos=array();
+    while($fila =mysqli_fetch_array($sql) )
+    {
+      array_push($datos,$fila);
+    }
+    echo json_encode($datos);
+    // echo "SELECT distinct(id_articulo),  cantidad FROM articulos_comprados WHERE fecha_compra between '" . $newDate  . " 00:00:00' AND '" . $newDate  . " 23:59:59'";
+
+
+  }
+
 ?>

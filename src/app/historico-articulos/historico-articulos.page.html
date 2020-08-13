@@ -15,7 +15,7 @@
       <td>Total artículos comprados</td>
     </tr>
       <tr *ngFor="let lista of listas">
-        <td> {{lista.fecha}}</td>
+        <td ><a routerLink="/historico-detalle/{{lista.fecha}}"><span class="fecha" > {{lista.fecha}}</span></a></td>
         <td> {{lista.cantidad}}</td>
       </tr>
   </table>
