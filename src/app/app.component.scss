@@ -64,7 +64,7 @@
   justify-content: center; */
 }
 
-#articulos, #articulosComp, #articulosDesp
+#articulos, #articulosComp, #articulosDesp, #articulosHistorico
 {
   width:100%;
 }
@@ -77,13 +77,13 @@
 }
 
 
-#tablaArticulos
+#tablaArticulos, #tablaHistorico
 {
   margin:0 auto;
   width: 100%;
 }
 
-#articulos tr, #tablaDespensa tr, #articulosDesp tr
+#articulos tr, #tablaDespensa tr, #articulosDesp tr, #tablaHistorico tr
 {
   height:40px;
  // border: 1px solid;
@@ -95,7 +95,7 @@
 }
 
 
-#articulos td, #articulosComp td, #tablaDespensa td
+#articulos td, #articulosComp td, #tablaDespensa td, #tablaHistorico td
 {
   border-collapse: collapse;
   padding:10px 15px;

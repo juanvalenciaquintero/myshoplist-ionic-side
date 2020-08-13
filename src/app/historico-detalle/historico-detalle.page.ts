@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-historico-detalle',
   templateUrl: './historico-detalle.page.html',
-  styleUrls: ['./historico-detalle.page.scss'],
+  styleUrls: ['./historico-detalle.page.scss','./../app.component.scss'],
 })
 export class HistoricoDetallePage implements OnInit
 {
