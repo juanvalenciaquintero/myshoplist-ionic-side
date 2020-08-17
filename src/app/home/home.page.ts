@@ -21,6 +21,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   articulo: Articulo;
   constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
   {
+    this.test();
     //this.chechNew();
     this.getAllArticles();
     this.getAllArticlesPurchased();
@@ -37,10 +38,21 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
+  test()
+  {
+   this.taskService.test()
+      .subscribe(data =>
+      {
+        console.log(data);
+
+      });
+  }
+
+
   checkArt(event: any): void
   {
     let articulo = event.target.value;
-    let listaArt: string[] = [];
+    let listaArt: any = [];
     let datos: any;
     // setTimeout(function ()
     // {

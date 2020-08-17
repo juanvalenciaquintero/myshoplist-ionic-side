@@ -8,7 +8,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class TaskService {
 
-  private url = 'http://estadisticas.dx.am';
+  // private url = 'http://estadisticas.dx.am';
+  private url = 'http://juanvalencia.x10host.com';
   // private url = 'http://myshoplist.is-best.net';
 
   constructor(public http: HttpClient)
@@ -18,7 +19,8 @@ export class TaskService {
 
   checkArt(articulo:string)
   {
-    const path = this.url +'/myshoplist.php?valor=3&name='+articulo;
+    let path = this.url + '/articulos/checkArt/' + articulo;
+    // const path = this.url +'/myshoplist.php?valor=3&name='+articulo;
   //	return this.http.get<number>(path);
     return new Promise(resolve => {
       this.http.get(path)
@@ -33,7 +35,8 @@ export class TaskService {
 
   addArticle(articulo: any)
   {
-    const path = this.url +'/myshoplist.php';
+    const path = this.url +'/articulos/addArticle';
+    // const path = this.url +'/myshoplist.php';
     let param =
     {
       'action': 'insert',
@@ -73,8 +76,8 @@ export class TaskService {
 
   getAllArticles()
   {
-     const path =this.url +'/myshoplist.php?valor=1';
-    //let path = 'http://juanvalencia.x10host.com/articulos/getAllArt';
+    //  const path =this.url +'/myshoplist.php?valor=1';
+    let path = this.url + '/articulos/getAllArt';
     return new Promise(resolve => {
       this.http.get(path )
         .subscribe(data =>
@@ -90,8 +93,8 @@ export class TaskService {
 
   getAllArticlesPurchased()
   {
-    //let path = 'http://juanvalencia.x10host.com/articulos/getAllArtPurchased';
-     const path = this.url +'/myshoplist.php?valor=2';
+    let path = this.url + '/articulos/getAllArtPurchased';
+    //  const path = this.url +'/myshoplist.php?valor=2';
     // return this.http.get<Article[]>(path);
     return new Promise(resolve => {
       this.http.get(path)
@@ -351,5 +354,10 @@ export class TaskService {
   getArticlesHistory(fecha)
   {
      return this.http.get(this.url + '/myshoplist.php?valor=8&fecha=' + fecha);
+  }
+
+  test()
+  {
+    return this.http.get('http://juanvalencia.x10host.com/test');
   }
 }

@@ -18,7 +18,7 @@
       <input type="text" id="artic" name="artic" (keyup)='checkArt($event)'>
       <button id="btnAdd" (click)="addArticleDesp();">Añadir</button>
       <div #listaArticulos *ngIf="visible" class="visible">
-        <div *ngFor="let encontrado of lista" (click)="selectArt($event);" > {{encontrado}} </div>
+        <div *ngFor="let encontrado of lista" (click)="selectArt($event);" > {{encontrado.name}} </div>
       </div>
     </div>
   </div>
