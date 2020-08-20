@@ -154,8 +154,9 @@ export class TaskService {
   {
     // const path = '/myshoplist.php?valor=2';
     // return this.http.get<Article[]>(path);
+    let path = this.url + '/api/despensa';
     return new Promise(resolve => {
-      this.http.get(this.url+'/myshoplist.php?valor=4')
+      this.http.get(path)
         .subscribe(data =>
         {
         resolve(data);
