@@ -4,5 +4,6 @@
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">estadisticas.dx.am</domain>
         <domain includeSubdomains="true">myshoplist.is-best.net</domain>
+        <domain includeSubdomains="true">juanvalencia.x10host.com</domain>
     </domain-config>
 </network-security-config>

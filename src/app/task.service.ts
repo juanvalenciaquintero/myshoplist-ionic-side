@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class TaskService {
 
   // private url = 'http://estadisticas.dx.am';
-  private url = 'http://juanvalencia.x10host.com';
+  private url = 'http://juanvalencia.x10host.com/api';
   // private url = 'http://myshoplist.is-best.net';
 
   constructor(public http: HttpClient)
@@ -77,7 +77,7 @@ export class TaskService {
   getAllArticles()
   {
     //  const path =this.url +'/myshoplist.php?valor=1';
-    let path = this.url + '/articulos/getAllArt';
+    let path = this.url + '/articulo/articulos';
     return new Promise(resolve => {
       this.http.get(path )
         .subscribe(data =>
@@ -93,7 +93,7 @@ export class TaskService {
 
   getAllArticlesPurchased()
   {
-    let path = this.url + '/articulos/getAllArtPurchased';
+    let path = this.url + '/articulo/articulosCompr';
     //  const path = this.url +'/myshoplist.php?valor=2';
     // return this.http.get<Article[]>(path);
     return new Promise(resolve => {
@@ -154,7 +154,7 @@ export class TaskService {
   {
     // const path = '/myshoplist.php?valor=2';
     // return this.http.get<Article[]>(path);
-    let path = this.url + '/api/despensa';
+    let path = this.url + '/despensa';
     return new Promise(resolve => {
       this.http.get(path)
         .subscribe(data =>
