@@ -22,7 +22,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
   {
     this.test();
-    //this.chechNew();
+    //this.checkNew();
     this.getAllArticles();
     this.getAllArticlesPurchased();
   }
@@ -60,7 +60,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
       if (articulo.length > 3)
       {
         this.taskService.checkArt(articulo)
-        .then(data =>
+        .subscribe(data =>
         {
             datos = data;
            console.log(data);
@@ -99,7 +99,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     let seleccionado = <HTMLInputElement>document.getElementById('artic');
     console.log('addArticleDesp:' +  seleccionado.value);
     this.taskService.addArticleDesp(seleccionado.value)
-      .then(data =>
+      .subscribe(data =>
       {
         console.log('Data: ' + data);
         id = data;
@@ -112,7 +112,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   {
     console.log('Añadir a la lista artículo:' + articulo);
     this.taskService.addArticle(articulo)
-      .then(data =>
+      .subscribe(data =>
       {
         this.getAllArticles();
         this.getAllArticlesPurchased();
@@ -198,7 +198,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     this.getAllArticlesPurchased();
 
   }
-  chechNew()
+  checkNew()
   {
     this.taskService.checkNew(1)
       .subscribe(data =>

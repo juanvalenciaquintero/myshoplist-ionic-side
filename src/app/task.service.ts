@@ -19,57 +19,52 @@ export class TaskService {
 
   checkArt(articulo:string)
   {
-    let path = this.url + '/articulos/checkArt/' + articulo;
-    // const path = this.url +'/myshoplist.php?valor=3&name='+articulo;
-  //	return this.http.get<number>(path);
-    return new Promise(resolve => {
-      this.http.get(path)
-        .subscribe(data =>
-        {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+    let path = this.url + '/articulo/checkArt/' + articulo;
+    return this.http.get(path);
   }
 
   addArticle(articulo: any)
   {
-    const path = this.url +'/articulos/addArticle';
+    const path = this.url + '/articulo/addArticle/' + articulo;
+    console.log(path);
+    return this.http.get(path);
     // const path = this.url +'/myshoplist.php';
-    let param =
-    {
-      'action': 'insert',
-      'artic' : articulo
-    }
-    return new Promise(resolve => {
-      this.http.post(path,param)
-        .subscribe(data =>
-        {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+    // let param =
+    // {
+    //   'action': 'insert',
+    //   'artic' : articulo
+    // }
+    // return new Promise(resolve => {
+    //   this.http.post(path,param)
+    //     .subscribe(data =>
+    //     {
+    //     resolve(data);
+    //   }, err => {
+    //     console.log(err);
+    //   });
+    // });
   }
 
   addArticleDesp(articulo)
   {
-    const path = this.url +'/myshoplist.php';
-    let param =
-    {
-      'action': 'insertDesp',
-      'artic' : articulo
-    }
-    return new Promise(resolve => {
-      this.http.post(path,param)
-        .subscribe(data =>
-        {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+      let path = this.url + '/articulo/addToList/' + articulo;
+      return this.http.get(path);
+    // const path = this.url +'/articulo/addToList/'+articulo;
+    // let param =
+    // {
+    //   'action': 'insertDesp',
+    //   'artic' : articulo
+    // }
+
+    // return new Promise(resolve => {
+    //   this.http.post(path,param)
+    //     .subscribe(data =>
+    //     {
+    //     resolve(data);
+    //   }, err => {
+    //     console.log(err);
+    //   });
+    // });
 
   }
 
@@ -348,7 +343,7 @@ export class TaskService {
 
   checkNew(articulo)
   {
-    let path = 'http://juanvalencia.x10host.com/articulos/addArticle/';
+    let path = 'http://juanvalencia.x10host.com/articulo/addArticle/';
     return this.http.get(path + articulo);
   }
 
