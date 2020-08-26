@@ -63,7 +63,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
         .subscribe(data =>
         {
             datos = data;
-           console.log(data);
+            console.log(data);
             if (data !== 0)
             {
               console.log(datos.length);
@@ -101,10 +101,8 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     this.taskService.addArticleDesp(seleccionado.value)
       .subscribe(data =>
       {
-        console.log('Data: ' + data);
-        id = data;
-        seleccionado.value = '';
-        this.addArt(id);
+        this.getAllArticles();
+        this.getAllArticlesPurchased();
     });
   }
 
@@ -122,7 +120,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   getAllArticles() {
     this.taskService.getAllArticles()
-    .then(data => {
+    .subscribe(data => {
       this.articulos = data;
       console.log(this.articulos);
     });
@@ -131,7 +129,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   getAllArticlesPurchased() {
     this.taskService.getAllArticlesPurchased()
-    .then(data => {
+    .subscribe(data => {
       this.articulosComp = data;
       console.log(this.articulosComp);
     });

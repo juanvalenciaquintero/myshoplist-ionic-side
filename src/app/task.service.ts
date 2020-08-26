@@ -73,15 +73,16 @@ export class TaskService {
   {
     //  const path =this.url +'/myshoplist.php?valor=1';
     let path = this.url + '/articulo/articulos';
-    return new Promise(resolve => {
-      this.http.get(path )
-        .subscribe(data =>
-        {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+          return this.http.get(path);
+    // return new Promise(resolve => {
+    //   this.http.get(path )
+    //     .subscribe(data =>
+    //     {
+    //     resolve(data);
+    //   }, err => {
+    //     console.log(err);
+    //   });
+    // });
     // const path = '/myshoplist.php?valor=1';
     // return this.http.get<Article[]>(path);
   }
@@ -91,30 +92,31 @@ export class TaskService {
     let path = this.url + '/articulo/articulosCompr';
     //  const path = this.url +'/myshoplist.php?valor=2';
     // return this.http.get<Article[]>(path);
-    return new Promise(resolve => {
-      this.http.get(path)
-        .subscribe(data =>
-        {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+    return this.http.get(path);
+    // return new Promise(resolve => {
+    //   this.http.get(path)
+    //     .subscribe(data =>
+    //     {
+    //     resolve(data);
+    //   }, err => {
+    //     console.log(err);
+    //   });
+    // });
   }
 
   updateArticle(articulo: number, usuario:number)
   {
-    const path = this.url + '/myshoplist.php';
+    // const path = this.url + '/myshoplist.php';
+    let path = this.url + '/articulo/itemPurchased';
     console.log(articulo);
     let param =
     {
-      'action' : 'update',
-      'artic'  : articulo,
+      'id_articulo'  : articulo,
       'usuario': usuario
     }
     return new Promise(resolve =>
     {
-      this.http.post(path, param)
+      this.http.post(path,param)
         .subscribe(data =>
       {
         resolve(data);
