@@ -137,8 +137,11 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   itemPurchased(articulo)
   {
+    console.log('Home.page.ts: ' + articulo + ' - ' + this.usuario);
     this.taskService.updateArticle(articulo,this.usuario)
-    .then(data => {
+      .subscribe(data =>
+      {
+        console.log(data);
       this.getAllArticles();
       this.getAllArticlesPurchased();
     });

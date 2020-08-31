@@ -107,23 +107,25 @@ export class TaskService {
   updateArticle(articulo: number, usuario:number)
   {
     // const path = this.url + '/myshoplist.php';
-    let path = this.url + '/articulo/itemPurchased';
-    console.log(articulo);
-    let param =
-    {
-      'id_articulo'  : articulo,
-      'usuario': usuario
-    }
-    return new Promise(resolve =>
-    {
-      this.http.post(path,param)
-        .subscribe(data =>
-      {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+    let path = this.url + '/articulo/itemPurchased/' +articulo + '/' + usuario ;
+      return this.http.get(path);
+    // console.log(articulo + ' - ' + usuario);
+    // console.log(path);
+    // let param =
+    // {
+    //   'id_articulo'  : articulo,
+    //   'usuario': usuario
+    // }
+    // return new Promise(resolve =>
+    // {
+    //   this.http.post(path,param)
+    //     .subscribe(data =>
+    //   {
+    //     resolve(data);
+    //   }, err => {
+    //     console.log(err);
+    //   });
+    // });
   }
 
   deleteArticles()
