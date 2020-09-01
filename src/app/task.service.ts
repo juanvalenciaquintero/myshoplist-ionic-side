@@ -108,8 +108,9 @@ export class TaskService {
   {
     // const path = this.url + '/myshoplist.php';
     let path = this.url + '/articulo/itemPurchased/' +articulo + '/' + usuario ;
-      return this.http.get(path);
-    // console.log(articulo + ' - ' + usuario);
+    console.log(path);
+    return this.http.get(path);
+
     // console.log(path);
     // let param =
     // {

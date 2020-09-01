@@ -142,9 +142,9 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
       .subscribe(data =>
       {
         console.log(data);
-      this.getAllArticles();
-      this.getAllArticlesPurchased();
-    });
+        this.getAllArticles();
+        this.getAllArticlesPurchased();
+      });
   }
 
   deleteArt()
