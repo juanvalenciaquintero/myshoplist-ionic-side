@@ -150,7 +150,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   deleteArt()
   {
     this.taskService.deleteArticles()
-    .then(data => {
+    .subscribe(data => {
       this.getAllArticles();
       this.getAllArticlesPurchased();
     });
@@ -161,7 +161,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     if (confirm("¿Quieres eliminar '" + nombre + "' de la lista?"))
     {
       this.taskService.deleteArtUnic(articulo)
-        .then(data =>
+        .subscribe(data =>
         {
           this.getAllArticles();
           this.getAllArticlesPurchased();
@@ -173,7 +173,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   {
     console.log('Anular: ' + articulo);
     this.taskService.returnItemPurchased(articulo)
-    .then(data => {
+    .subscribe(data => {
       this.getAllArticles();
       this.getAllArticlesPurchased();
     });

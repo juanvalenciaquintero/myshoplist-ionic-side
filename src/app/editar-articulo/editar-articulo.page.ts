@@ -43,7 +43,7 @@ export class EditarArticuloPage implements OnInit {
         (data) =>
         {
           console.log(data);
-          this.articulo = data;
+          this.articulo = data[0];
         },
         (error) =>
         {
