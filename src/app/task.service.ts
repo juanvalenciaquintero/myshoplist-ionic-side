@@ -11,6 +11,11 @@ export class TaskService {
   // private url = 'http://estadisticas.dx.am';
   private url = 'http://juanvalencia.x10host.com/api';
   // private url = 'http://myshoplist.is-best.net';
+  headers = new HttpHeaders()
+    .set("Access-Control-Allow-Origin", "*")
+    .set("Access-Control-Allow-Headers", "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization")
+    .set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+
 
   constructor(public http: HttpClient)
   {
@@ -122,11 +127,19 @@ export class TaskService {
     const path =this.url + '/despensa/actualizar';
     let param =
     {
-      'artic' : articulo
+      'id': articulo.id,
+      'name': articulo.name,
+      'brand': articulo.brand,
+      'supermarket': articulo.supermarket,
+      'price': articulo.price,
+      'fecha_desp': articulo.fecha_desp,
+      'pasillo':articulo.pasillo
     }
+    // const path = "http://juanvalencia.x10host.com/prueba/addArt";
     return new Promise(resolve =>
       {
-        this.http.post(path, param)
+      // this.http.post(path, param)
+      this.http.post(path, param, { headers: this.headers,responseType: 'json' })
           .subscribe(data =>
         {
         resolve(data);
@@ -136,6 +149,7 @@ export class TaskService {
     });
 
   }
+
 
   checklogin(usuario,password)
   {
