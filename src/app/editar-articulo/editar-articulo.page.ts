@@ -58,7 +58,8 @@ export class EditarArticuloPage implements OnInit {
     this.taskService.actualizar(this.articulo)
       .then(data =>
       {
-        this.router.navigate(['/despensa']);
+        console.log(data);
+        // this.router.navigate(['/despensa']);
       });
   }
 

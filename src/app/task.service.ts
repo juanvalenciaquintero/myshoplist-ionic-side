@@ -13,8 +13,9 @@ export class TaskService {
   // private url = 'http://myshoplist.is-best.net';
   headers = new HttpHeaders()
     .set("Access-Control-Allow-Origin", "*")
-    .set("Access-Control-Allow-Headers", "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization")
-    .set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    .set("Access-Control-Request-Headers", "Access-Control-Allow-Origin, Content-Type, Accept, Access-Control-Request-Method, Authorization")
+    .set("Access-Control-Request-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+    .set("Content-Type", "multipart/form-data");
 
 
   constructor(public http: HttpClient)
@@ -124,7 +125,8 @@ export class TaskService {
 
   actualizar(articulo)
   {
-    const path =this.url + '/despensa/actualizar';
+    // const path =this.url + '/despensa/actualizar';
+ const path = 'http://juanvalencia.x10host.com/prueba/addArt';
     let param =
     {
       'id': articulo.id,
@@ -139,7 +141,8 @@ export class TaskService {
     return new Promise(resolve =>
       {
       // this.http.post(path, param)
-      this.http.post(path, param, { headers: this.headers,responseType: 'json' })
+      this.http.post(path, param, { headers: this.headers, responseType: 'json' })
+        // this.http.post(path, param, { responseType: 'json' })
           .subscribe(data =>
         {
         resolve(data);
