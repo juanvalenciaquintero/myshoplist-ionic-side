@@ -59,9 +59,10 @@ export class EditarArticuloPage implements OnInit {
       .then(data =>
       {
         console.log(data);
-        // this.router.navigate(['/despensa']);
+        this.router.navigate(['/despensa']);
       });
   }
+
 
   volver()
   {

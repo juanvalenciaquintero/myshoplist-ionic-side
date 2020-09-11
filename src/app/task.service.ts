@@ -10,6 +10,7 @@ export class TaskService {
 
   // private url = 'http://estadisticas.dx.am';
   private url = 'http://juanvalencia.x10host.com/api';
+  private authUrl = 'http://juanvalencia.x10host.com/auth';
   // private url = 'http://myshoplist.is-best.net';
   headers = new HttpHeaders()
     .set("Access-Control-Allow-Origin", "*")
@@ -125,8 +126,7 @@ export class TaskService {
 
   actualizar(articulo)
   {
-    // const path =this.url + '/despensa/actualizar';
- const path = 'http://juanvalencia.x10host.com/prueba/addArt';
+    const path =this.url + '/despensa/actualizar';
     let param =
     {
       'id': articulo.id,
@@ -137,12 +137,9 @@ export class TaskService {
       'fecha_desp': articulo.fecha_desp,
       'pasillo':articulo.pasillo
     }
-    // const path = "http://juanvalencia.x10host.com/prueba/addArt";
     return new Promise(resolve =>
       {
-      // this.http.post(path, param)
-      this.http.post(path, param, { headers: this.headers, responseType: 'json' })
-        // this.http.post(path, param, { responseType: 'json' })
+      this.http.post(path, param, { responseType: 'json' })
           .subscribe(data =>
         {
         resolve(data);
@@ -153,10 +150,9 @@ export class TaskService {
 
   }
 
-
   checklogin(usuario,password)
   {
-    const path = this.url +'/myshoplist.php';
+    const path = this.authUrl +'/checkLogin';
     let param =
     {
       'action'  : 'checkLogin',
