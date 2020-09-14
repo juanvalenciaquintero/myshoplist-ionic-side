@@ -29,6 +29,12 @@
       <span>Fecha de alta:</span> <input type="date" [(ngModel)]="articulo.fecha_desp" name="fecha_desp" value="{{articulo.fecha_desp}}">
     </div>
     <div>
+      <span>Categoría:</span>
+      <select  name="cat" [(ngModel)]="articulo.categoria" >
+        <option *ngFor="let categoria of categorias"   value="{{categoria.id}}"> {{categoria.name}} </option>
+      </select>
+    </div>
+    <div>
       <span>Pasillo:</span> <input type="text"   [(ngModel)]="articulo.pasillo" name="pasillo" value="{{articulo.pasillo}}">
     </div>
 

@@ -15,13 +15,24 @@ export class EditarArticuloPage implements OnInit {
   id: number;
   articulo: any;
   articulosDespensa: any;
+  categorias: any;
 
 
   constructor(public taskService: TaskService,private platform: Platform,private rutaActiva: ActivatedRoute,private router: Router) { }
 
+
   ngOnInit()
   {
-     this.getArticleDespensa();
+    this.getArticleDespensa();
+
+  }
+
+  compareFnc(c1:any,c2:any)
+  {
+    console.log(c1);
+    console.log(c2);
+    console.log(this.articulo);
+    return c1.id===this.articulo.categoria;
   }
 
   getAllArticlesDespensa()
@@ -44,12 +55,26 @@ export class EditarArticuloPage implements OnInit {
         {
           console.log(data);
           this.articulo = data[0];
+
+          this.getCategories();
         },
         (error) =>
         {
           console.log(error);
         }
     )
+  }
+
+  getCategories()
+  {
+    this.taskService.getCategories()
+    .subscribe(data => {
+      this.categorias = data;
+      console.log(this.categorias);
+      console.log(this.articulo.categoria);
+
+      this.categorias.selectedValue = this.articulo.categoria;
+    });
   }
 
   actualizar()

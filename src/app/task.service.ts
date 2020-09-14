@@ -135,7 +135,8 @@ export class TaskService {
       'supermarket': articulo.supermarket,
       'price': articulo.price,
       'fecha_desp': articulo.fecha_desp,
-      'pasillo':articulo.pasillo
+      'pasillo': articulo.pasillo,
+      'categoria':articulo.categoria
     }
     return new Promise(resolve =>
       {
@@ -256,5 +257,12 @@ export class TaskService {
   test()
   {
     return this.http.get('http://juanvalencia.x10host.com/test');
+  }
+
+  getCategories()
+  {
+   let path = this.url + '/despensa/getCategories';
+   return this.http.get(path);
+
   }
 }
