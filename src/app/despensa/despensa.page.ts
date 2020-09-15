@@ -43,11 +43,15 @@ export class DespensaPage implements OnInit {
 
   borrar(articulo)
   {
-    this.taskService.deleteArticleDespensa(articulo)
-    .then(data => {
-      this.getAllArticlesDespensa();
-    });
+    if (confirm('¿Quiere eliminar este artículo?'))
+    {
+      this.taskService.deleteArticleDespensa(articulo)
+      .subscribe(data => {
+        this.getAllArticlesDespensa();
+      });
+    }
   }
+
 
   ngAfterViewInit()
   {

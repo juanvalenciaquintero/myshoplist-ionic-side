@@ -61,6 +61,10 @@ const routes: Routes = [
     path: 'historico-detalle/:fecha',
     loadChildren: () => import('./historico-detalle/historico-detalle.module').then( m => m.HistoricoDetallePageModule),
     canActivate: [LoggedGuard]
+  },
+  {
+    path: 'nuevo-articulo',
+    loadChildren: () => import('./nuevo-articulo/nuevo-articulo.module').then( m => m.NuevoArticuloPageModule)
   }
 
 

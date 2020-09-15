@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>nuevo-articulo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form  (ngSubmit)="nuevoArt()">
+  <div  id="articuloDespensa">
+    <div>
+      <span>Artículo:</span> <input type="text"  [(ngModel)]="articulo"  name="name" >
+    </div>
+    <div>
+      <span>Marca:</span> <input type="text" [(ngModel)]="articulo.brand" name="brand" >
+    </div>
+    <div>
+      <span>Supermercado:</span> <input type="text" [(ngModel)]="articulo.supermarket" name="supermarket" >
+    </div>
+    <div>
+      <span>Precio:</span> <input type="text" [(ngModel)]="articulo.price" name="price"  >
+    </div>
+    <div>
+      <span>Fecha de alta:</span> <input type="date" [(ngModel)]="articulo.fecha_desp" name="fecha_desp" >
+    </div>
+    <!-- <div>
+      <span>Categoría:</span>
+      <select  name="cat" [(ngModel)]="articulo.categoria" >
+        <option value="0">Selecciona</option>
+        <option *ngFor="let categoria of categorias"   value="{{categoria.id}}"> {{categoria.name}} </option>
+      </select>
+    </div> -->
+    <div>
+      <span>Pasillo:</span> <input type="text"   [(ngModel)]="articulo.pasillo" name="pasillo" >
+    </div>
+
+  </div>
+  <div id="botones">
+    <button id="cancelar" (click)="volver();">Cancelar</button>
+    <button id="actualizar" type="submit" >Actualizar</button>
+  </div>
+</form>
+
+</ion-content>
