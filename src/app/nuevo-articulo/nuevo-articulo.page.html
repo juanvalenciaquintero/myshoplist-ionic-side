@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-<form  (ngSubmit)="nuevoArt()">
+<form  [formGroup]="checkoutForm" (ngSubmit)="nuevoArt(checkoutForm.value)">
   <div  id="articuloDespensa">
     <div>
       <span>Artículo:</span> <input type="text"  [(ngModel)]="articulo"  name="name" >

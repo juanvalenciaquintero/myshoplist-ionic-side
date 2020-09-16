@@ -1,8 +1,10 @@
+import { Articulo } from './../interfaces/articulo';
 import { Component, OnInit,OnDestroy,AfterViewInit  } from '@angular/core';
 import { TaskService } from './../task.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-nuevo-articulo',
@@ -12,18 +14,24 @@ import { Router } from '@angular/router';
 export class NuevoArticuloPage implements OnInit {
 
 
-  articulo: {
-    'name': '',
-    'brand': '',
-    'supermarket': '',
-    'categoria': '',
-    'price': '',
-    'fecha_desp': '',
-    'pasillo':''
-  };
+  checkoutForm;
+
   categorias: any;
 
-  constructor(public taskService: TaskService,private platform: Platform,private rutaActiva: ActivatedRoute,private router: Router) { }
+  constructor( public taskService: TaskService, private platform: Platform, private rutaActiva: ActivatedRoute, private router: Router, private formBuilder: FormBuilder)
+  {
+
+
+    this.checkoutForm = this.formBuilder.group({
+      'name': '',
+      'brand': '',
+      'supermarket': '',
+      'categoria': '',
+      'price': '',
+      'fecha_desp': '',
+      'pasillo':''
+    });
+  }
 
   ngOnInit()
   {
@@ -42,7 +50,7 @@ export class NuevoArticuloPage implements OnInit {
 
   nuevoArt()
   {
-    console.log(this.articulo);
+    console.log(this.checkoutForm);
   }
 
   volver()

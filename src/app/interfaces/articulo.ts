@@ -7,4 +7,5 @@ export interface Articulo
   price: number;
   fecha: Date;
   pasillo: number;
+  categoria: number;
 }
