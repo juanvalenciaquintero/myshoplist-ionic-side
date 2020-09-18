@@ -239,6 +239,32 @@ export class TaskService {
     });
   }
 
+  nuevoArtDesp(articulo)
+  {
+    const path =this.url + '/despensa/nuevoArt';
+    let param =
+    {
+      'name': articulo.name,
+      'brand': articulo.brand,
+      'supermarket': articulo.supermarket,
+      'price': articulo.price,
+      'fecha_desp': articulo.fecha_desp,
+      'pasillo': articulo.pasillo,
+      'categoria':articulo.categoria
+    }
+    return new Promise(resolve =>
+      {
+      this.http.post(path, param, { responseType: 'json' })
+          .subscribe(data =>
+        {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
+
   checkLists()
   {
     return this.http.get(this.url + '/myshoplist.php?valor=7');

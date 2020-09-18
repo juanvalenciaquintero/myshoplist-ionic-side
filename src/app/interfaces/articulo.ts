@@ -5,7 +5,7 @@ export interface Articulo
   brand: string;
   supermarket: string;
   price: number;
-  fecha: Date;
+  fecha_desp: string;
   pasillo: number;
   categoria: number;
 }

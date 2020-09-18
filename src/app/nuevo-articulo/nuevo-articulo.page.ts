@@ -4,7 +4,6 @@ import { TaskService } from './../task.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-nuevo-articulo',
@@ -15,22 +14,23 @@ export class NuevoArticuloPage implements OnInit {
 
 
   checkoutForm;
+  articulo: Articulo = {
+    id:0,
+    name: '',
+    brand: '',
+    supermarket: '',
+    price: 0,
+    fecha_desp: '2020-09-18',
+    pasillo: 0,
+    categoria: 0,
+  }
 
   categorias: any;
 
-  constructor( public taskService: TaskService, private platform: Platform, private rutaActiva: ActivatedRoute, private router: Router, private formBuilder: FormBuilder)
+  constructor( public taskService: TaskService, private platform: Platform, private rutaActiva: ActivatedRoute, private router: Router)
   {
 
 
-    this.checkoutForm = this.formBuilder.group({
-      'name': '',
-      'brand': '',
-      'supermarket': '',
-      'categoria': '',
-      'price': '',
-      'fecha_desp': '',
-      'pasillo':''
-    });
   }
 
   ngOnInit()
@@ -50,7 +50,11 @@ export class NuevoArticuloPage implements OnInit {
 
   nuevoArt()
   {
-    console.log(this.checkoutForm);
+    this.taskService.nuevoArtDesp(this.articulo)
+    .then(data => {
+      console.log(data);
+      this.router.navigate(['/despensa']);
+    });
   }
 
   volver()

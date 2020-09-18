@@ -5,10 +5,10 @@
 </ion-header>
 
 <ion-content>
-<form  [formGroup]="checkoutForm" (ngSubmit)="nuevoArt(checkoutForm.value)">
+<form   (ngSubmit)="nuevoArt()">
   <div  id="articuloDespensa">
     <div>
-      <span>Artículo:</span> <input type="text"  [(ngModel)]="articulo"  name="name" >
+      <span>Artículo:</span> <input type="text"  [(ngModel)]="articulo.name"  name="name" >
     </div>
     <div>
       <span>Marca:</span> <input type="text" [(ngModel)]="articulo.brand" name="brand" >
@@ -22,13 +22,13 @@
     <div>
       <span>Fecha de alta:</span> <input type="date" [(ngModel)]="articulo.fecha_desp" name="fecha_desp" >
     </div>
-    <!-- <div>
+    <div>
       <span>Categoría:</span>
       <select  name="cat" [(ngModel)]="articulo.categoria" >
         <option value="0">Selecciona</option>
         <option *ngFor="let categoria of categorias"   value="{{categoria.id}}"> {{categoria.name}} </option>
       </select>
-    </div> -->
+    </div>
     <div>
       <span>Pasillo:</span> <input type="text"   [(ngModel)]="articulo.pasillo" name="pasillo" >
     </div>
