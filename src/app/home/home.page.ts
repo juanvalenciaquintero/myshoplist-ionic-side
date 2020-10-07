@@ -21,7 +21,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   articulo: Articulo;
   constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
   {
-    this.test();
+    // this.test();
     //this.checkNew();
     this.getAllArticles();
     this.getAllArticlesPurchased();
@@ -38,15 +38,15 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  test()
-  {
-   this.taskService.test()
-      .subscribe(data =>
-      {
-        console.log(data);
+  // test()
+  // {
+  //  this.taskService.test()
+  //     .subscribe(data =>
+  //     {
+  //       console.log(data);
 
-      });
-  }
+  //     });
+  // }
 
 
   checkArt(event: any): void

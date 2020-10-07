@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { isError } from 'util';
 //mport { Observable } from 'rxjs';
 
 
@@ -175,16 +176,18 @@ export class TaskService {
 
   checkUser(id)
   {
-    return this.http.get(this.url + '/myshoplist.php?valor=6&id=' + id);
+    return this.http.get(this.url + '/usuario/show/' +id);
+    // return this.http.get(this.url + '/myshoplist.php?valor=6&id=' + id);
   }
 
   updateUser(user)
   {
-    const path = this.url +'/myshoplist.php';
+    // const path = this.url + '/myshoplist.php';
+    const path = this.url +'/usuario/actualizar';
     let param =
     {
-      'action'  : 'updateUser',
-      'usuario': user
+      'id'  : user.id,
+      'name': user.nombre
     }
     return new Promise(resolve =>
       {
@@ -270,21 +273,21 @@ export class TaskService {
     return this.http.get(this.url + '/myshoplist.php?valor=7');
   }
 
-  checkNew(articulo)
-  {
-    let path = 'http://juanvalencia.x10host.com/articulo/addArticle/';
-    return this.http.get(path + articulo);
-  }
+  // checkNew(articulo)
+  // {
+  //   // let path = 'http://juanvalencia.x10host.com/articulo/addArticle/';
+  //   return this.http.get(this.url + 'articulo/addArticle/' + articulo);
+  // }
 
   getArticlesHistory(fecha)
   {
      return this.http.get(this.url + '/myshoplist.php?valor=8&fecha=' + fecha);
   }
 
-  test()
-  {
-    return this.http.get('http://juanvalencia.x10host.com/test');
-  }
+  // test()
+  // {
+  //   return this.http.get('http://juanvalencia.x10host.com/test');
+  // }
 
   getCategories()
   {

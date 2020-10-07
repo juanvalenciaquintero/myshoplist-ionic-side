@@ -29,7 +29,8 @@ export class UserPage implements OnInit {
       .subscribe(data =>
       {
         console.log(data);
-        this.user = data;
+        this.user = data[0];
+        console.log(this.user.name);
       });
   }
 
