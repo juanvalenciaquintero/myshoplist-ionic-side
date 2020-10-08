@@ -56,9 +56,9 @@ export class TaskService {
     return this.http.get(path);
   }
 
-  updateArticle(articulo: number, usuario:number)
+  updateArticle(articulo: number,cantidad:number, usuario:number)
   {
-    let path = this.url + '/articulo/itemPurchased/' +articulo + '/' + usuario ;
+    let path = this.url + '/articulo/itemPurchased/' +articulo + '/' + cantidad + '/' + usuario ;
     console.log(path);
     return this.http.get(path);
   }
@@ -270,14 +270,15 @@ export class TaskService {
 
   checkLists()
   {
-    return this.http.get(this.url + '/myshoplist.php?valor=7');
+    // return this.http.get(this.url + '/myshoplist.php?valor=7');
+    return this.http.get(this.url + '/lista/listasHistorico');
   }
 
-  // checkNew(articulo)
-  // {
-  //   // let path = 'http://juanvalencia.x10host.com/articulo/addArticle/';
-  //   return this.http.get(this.url + 'articulo/addArticle/' + articulo);
-  // }
+  checkNew(articulo)
+  {
+    // let path = 'http://juanvalencia.x10host.com/articulo/addArticle/';
+    return this.http.get(this.url + 'articulo/addArticle/' + articulo);
+  }
 
   getArticlesHistory(fecha)
   {
