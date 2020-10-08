@@ -28,7 +28,7 @@
       <tbody>
         <tr *ngFor="let articulo of articulos; let odd = odd" [ngClass]="{odd:odd}">
           <td>
-            <ion-icon class="icono" name="arrow-redo" (click)='itemPurchased(articulo.id_articulo)'></ion-icon>
+            <ion-icon class="icono" name="arrow-redo" (click)='itemPurchased(articulo.id_articulo,articulo.cantidad)'></ion-icon>
           </td>
           <td>{{ articulo.name }}</td>
           <td>{{ articulo.cantidad }}</td>
