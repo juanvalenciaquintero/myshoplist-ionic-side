@@ -19,6 +19,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   backButtonSubscription;
   usuario: number;
   articulo: Articulo;
+  valores = Array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
   constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
   {
     // this.test();
@@ -206,5 +207,10 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
       {
         console.log(data);
       });
+  }
+
+  actualizarQtty(valor)
+  {
+    console.log('Actualizar: ' + valor);
   }
 }

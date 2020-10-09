@@ -31,7 +31,12 @@
             <ion-icon class="icono" name="arrow-redo" (click)='itemPurchased(articulo.id_articulo,articulo.cantidad)'></ion-icon>
           </td>
           <td>{{ articulo.name }}</td>
-          <td>{{ articulo.cantidad }}</td>
+          <td>
+            <select (change)="actualizarQtty($event.target);">
+
+              <option *ngFor="let valor of valores" value="{{ valor }}" [selected]="valor===articulo.cantidad" >{{ valor }}</option>
+            </select>
+          </td>
           <td><ion-icon class="icono" name="close-circle" (click)="deleteArtUnic(articulo.id,articulo.name);"></ion-icon></td>
         </tr>
       </tbody>
