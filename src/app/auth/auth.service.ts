@@ -45,7 +45,8 @@ export class AuthService {
 
   public desloguear()
   {
-    this.storageService.setLocal('logged', false)
+    this.storageService.setLocal('logged', false);
+    this.storageService.removeLocal('userId');
     return true;
   }
 }
