@@ -153,6 +153,27 @@ export class TaskService {
 
   }
 
+  actualizarQtty(articulo,cantidad)
+  {
+    const path =this.url + '/articulo/actualizarQtty';
+    let param =
+    {
+      'id': articulo,
+      'cantidad':cantidad
+    }
+    return new Promise(resolve =>
+      {
+      this.http.post(path, param, { responseType: 'json' })
+          .subscribe(data =>
+        {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
+
   checklogin(usuario,password)
   {
     const path = this.authUrl +'/checkLogin';
@@ -178,6 +199,26 @@ export class TaskService {
   {
     return this.http.get(this.url + '/usuario/show/' +id);
     // return this.http.get(this.url + '/myshoplist.php?valor=6&id=' + id);
+  }
+
+  createUser(nombre,pass)
+  {
+    const path = this.url +'/usuario/nuevo';
+    let param =
+    {
+      'nombre': nombre,
+      'pass': pass
+    }
+    return new Promise(resolve =>
+      {
+        this.http.post(path, param)
+          .subscribe(data =>
+        {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
   }
 
   updateUser(user)

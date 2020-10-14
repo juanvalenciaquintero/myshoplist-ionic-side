@@ -32,7 +32,7 @@
           </td>
           <td>{{ articulo.name }}</td>
           <td>
-            <select (change)="actualizarQtty($event.target);">
+            <select (change)="actualizarQtty(articulo.id_articulo,$event.target.value);">
 
               <option *ngFor="let valor of valores" value="{{ valor }}" [selected]="valor===articulo.cantidad" >{{ valor }}</option>
             </select>

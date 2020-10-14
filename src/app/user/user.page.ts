@@ -14,15 +14,19 @@ export class UserPage implements OnInit {
 
   user: any;
   id: number;
+  nombreUsuario: any;
   password1: any;
   password2: any;
   newPassword: boolean = false;
+  newUser: boolean = false;
+  superUser: boolean = false;
   backButtonSubscription;
 
   constructor(private authService: AuthService,private platform: Platform,public storageService: StorageService,public taskService: TaskService,private router: Router) { }
 
   ngOnInit()
   {
+
     this.id = this.storageService.getLocal('userId');
     console.log(this.id);
     this.taskService.checkUser(this.id)
@@ -30,8 +34,10 @@ export class UserPage implements OnInit {
       {
         console.log(data);
         this.user = data[0];
-        console.log(this.user.name);
+        console.log(this.user.id);
+        this.superUser = (this.user.id === 1) ? true : false;
       });
+
   }
 
   ngAfterViewInit()
@@ -69,6 +75,7 @@ export class UserPage implements OnInit {
   newPass()
   {
     this.newPassword = true;
+    this.newUser = false;
   }
 
   updatePass()
@@ -84,6 +91,33 @@ export class UserPage implements OnInit {
       this.newPassword = false;
     }
   }
+  crearUser()
+  {
+    console.log('Crear usuario');
+    this.newPassword = false;
+    this.newUser = true;
+  }
 
+  loadUser()
+  {
+    console.log(this.nombreUsuario);
+    console.log(this.password1);
+    console.log(this.password2);
+    if (this.password1 !== this.password2)
+    {
+      alert('Las contraseñas no coinciden');
+    } else
+    {
+      this.taskService.createUser(this.nombreUsuario,this.password1)
+        .then(data =>
+        {
+          alert('El usuario se ha creado correctamente');
+          console.log(data);
+        });
+      this.newUser = false;
+    }
+    this.password1 = '';
+    this.password2 = '';
+  }
 
 }

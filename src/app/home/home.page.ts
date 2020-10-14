@@ -209,8 +209,13 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  actualizarQtty(valor)
+  actualizarQtty(articulo,cantidad)
   {
-    console.log('Actualizar: ' + valor);
+    console.log('Actualizar ' + articulo + ': ' + cantidad);
+    this.taskService.actualizarQtty(articulo,cantidad)
+      .then(data =>
+      {
+        console.log(data);
+      });
   }
 }

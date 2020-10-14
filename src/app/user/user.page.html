@@ -18,7 +18,9 @@
     <button id="actualizar" (click)="actualizar(user);" >Actualizar</button>
     <button id="newPass" (click)="newPass();">Nueva contraseña</button>
     <button id="desloguear" (click)="desloguear();">Desconectar</button>
+    <button id="crear" (click)="crearUser();" *ngIf="superUser" >Crear Usuario</button>
   </div>
+
   <div id="newPassword" *ngIf="newPassword">
     <div>
       <span>Contraseña actual</span>
@@ -34,6 +36,24 @@
     </div>
     <div>
     <button id="grabarPass" (click)="updatePass();">Grabar contraseña nueva</button>
+    </div>
+  </div>
+
+  <div id="newUser" *ngIf="newUser">
+    <div>
+      <span>Nombre de usuario</span>
+      <input type="text" [(ngModel)]="nombreUsuario">
+    </div>
+    <div>
+      <span>Contraseña</span>
+      <input type="password" [(ngModel)]="password1">
+    </div>
+    <div>
+      <span>Repite la contraseña</span>
+      <input type="password" [(ngModel)]="password2">
+    </div>
+    <div>
+    <button id="grabarUser" (click)="loadUser();">Grabar usuario</button>
     </div>
   </div>
 </ion-content>

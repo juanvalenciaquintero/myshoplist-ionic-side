@@ -21,7 +21,7 @@
         <tr *ngFor="let articulo of articulosDespensa; let odd = odd" [ngClass]="{odd:odd}">
 
          <td><a routerLink="/editar/{{articulo.id}}"><ion-icon class="icono" name="arrow-redo" (click)='editar(articulo.id);'></ion-icon></a></td>
-         <td><a routerLink="/editar/{{articulo.id}}">{{ articulo.name }}</a></td>
+         <td><a routerLink="/editar/{{articulo.id}}" class="nombreArt">{{ articulo.name }}</a></td>
          <td>{{ articulo.pasillo }}</td>
          <td><ion-icon class="icono" name="close-circle" (click)='borrar(articulo.id);'></ion-icon></td>
       </tr>
