@@ -32,7 +32,9 @@ export class AuthService {
 
   public checkLogged()
   {
+
     this.logged = this.storageService.getLocal('logged');
+    console.log(this.logged);
     if (this.logged)
     {
       return true;
@@ -46,7 +48,7 @@ export class AuthService {
   public desloguear()
   {
     this.storageService.setLocal('logged', false);
-    this.storageService.removeLocal('userId');
+    this.storageService.setLocal('userId',0);
     return true;
   }
 }

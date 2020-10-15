@@ -179,9 +179,8 @@ export class TaskService {
     const path = this.authUrl +'/checkLogin';
     let param =
     {
-      'action'  : 'checkLogin',
-      'usuario': usuario,
-      'password' : password
+      'nombre': usuario,
+      'pass' : password
     }
     return new Promise(resolve =>
       {

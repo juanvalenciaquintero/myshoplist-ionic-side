@@ -26,7 +26,6 @@ export class UserPage implements OnInit {
 
   ngOnInit()
   {
-
     this.id = this.storageService.getLocal('userId');
     console.log(this.id);
     this.taskService.checkUser(this.id)
