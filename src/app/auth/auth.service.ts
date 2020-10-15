@@ -35,6 +35,7 @@ export class AuthService {
 
     this.logged = this.storageService.getLocal('logged');
     console.log(this.logged);
+    console.log(this.storageService.getLocal('userId'));
     if (this.logged)
     {
       return true;

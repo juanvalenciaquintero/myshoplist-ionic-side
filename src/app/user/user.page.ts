@@ -26,9 +26,16 @@ export class UserPage implements OnInit {
 
   ngOnInit()
   {
-    this.id = this.storageService.getLocal('userId');
-    console.log(this.id);
-    this.taskService.checkUser(this.id)
+
+
+  }
+
+  ngAfterViewInit()
+  {
+      // this.storageService.setLocal('userId',1);
+      this.id = this.storageService.getLocal('userId');
+      console.log(this.id);
+      this.taskService.checkUser(this.id)
       .subscribe(data =>
       {
         console.log(data);
@@ -36,11 +43,6 @@ export class UserPage implements OnInit {
         console.log(this.user.id);
         this.superUser = (this.user.id === 1) ? true : false;
       });
-
-  }
-
-  ngAfterViewInit()
-  {
 
     this.backButtonSubscription = this.platform.backButton.subscribe(()=>
     {
