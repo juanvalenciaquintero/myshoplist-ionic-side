@@ -10,8 +10,10 @@ import { isError } from 'util';
 export class TaskService {
 
   // private url = 'http://estadisticas.dx.am';
-  private url = 'http://juanvalencia.x10host.com/api';
-  private authUrl = 'http://juanvalencia.x10host.com/auth';
+  // private url = 'http://juanvalencia.x10host.com/api';
+  // private authUrl = 'http://juanvalencia.x10host.com/auth';
+  private url = 'http://myshoplist-laravel.valquinter.com/api';
+  private authUrl = 'http://myshoplist-laravel.valquinter.com/auth';
   // private url = 'http://myshoplist.is-best.net';
   headers = new HttpHeaders()
     .set("Access-Control-Allow-Origin", "*")
@@ -187,11 +189,11 @@ export class TaskService {
         this.http.post(path, param)
           .subscribe(data =>
         {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+     });
   }
 
   checkUser(id)

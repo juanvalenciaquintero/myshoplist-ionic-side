@@ -13,7 +13,7 @@ import { TaskService } from './../task.service';
 export class LoginPage implements OnInit
 {
 
-  user: string;
+  user: any;
   pass: string;
 
   constructor(public storageService: StorageService, public taskService: TaskService,private router: Router) { }
@@ -46,11 +46,12 @@ export class LoginPage implements OnInit
       .then(data =>
       {
         console.log(data);
-        if (data!=='false')
+        if (data!=='0')
         {
           console.log(data);
+          this.user = data;
           this.storageService.setLocal('logged', true);
-          this.storageService.setLocal('userId', data);
+          this.storageService.setLocal('userId', parseInt(this.user));
           this.router.navigate(['/home']);
         }
       });

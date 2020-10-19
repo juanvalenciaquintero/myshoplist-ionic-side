@@ -40,14 +40,17 @@ export class UserPage implements OnInit {
       {
         console.log(data);
         this.user = data[0];
-        console.log(this.user.id);
+        console.log('ngAfterViewInit: ' +  this.user.id);
         this.superUser = (this.user.id === 1) ? true : false;
+
       });
 
     this.backButtonSubscription = this.platform.backButton.subscribe(()=>
     {
       this.router.navigate(['/home'])
     });
+
+
   }
 
   ngOnDestroy()
@@ -59,7 +62,8 @@ export class UserPage implements OnInit {
   {
     if (this.authService.desloguear())
     {
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/login']);
+      navigator['app'].exitApp();
     };
   }
 

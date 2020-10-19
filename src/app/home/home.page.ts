@@ -19,7 +19,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   backButtonSubscription;
   usuario: number;
   articulo: Articulo;
-  valores = Array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+  valores = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
   constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
   {
     // this.test();
@@ -35,7 +35,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
     console.log(this.storageService.getLocal('logged'));
     console.log(this.storageService.getLocal('userId'));
-    this.usuario = this.storageService.getLocal('userId');
+    this.usuario = parseInt(this.storageService.getLocal('userId'));
 
   }
 
