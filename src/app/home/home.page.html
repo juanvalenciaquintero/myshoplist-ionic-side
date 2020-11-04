@@ -28,7 +28,7 @@
       <tbody>
         <tr *ngFor="let articulo of articulos; let odd = odd" [ngClass]="{odd:odd}">
           <td>
-            <ion-icon class="icono" name="arrow-redo" (click)='itemPurchased(articulo.id_articulo,articulo.cantidad)'></ion-icon>
+            <ion-icon name="cart"  (click)='itemPurchased(articulo.id_articulo,articulo.cantidad)'></ion-icon>
           </td>
           <td>{{ articulo.name }}</td>
           <td>
@@ -37,20 +37,20 @@
               <option *ngFor="let valor of valores" value="{{ valor }}" [selected]="valor==articulo.cantidad" >{{ valor }}</option>
             </select>
           </td>
-          <td><ion-icon class="icono" name="close-circle" (click)="deleteArtUnic(articulo.id,articulo.name);"></ion-icon></td>
+          <td><div class="borrar" (click)="deleteArtUnic(articulo.id,articulo.name);"></div></td>
         </tr>
       </tbody>
     </table>
 
     <div id="comprados">
-      <ion-icon class="icono" name="close-circle" (click)="deleteArt();"></ion-icon>
+      <div class="borrar" (click)="deleteArt();"></div>
       <h2>Artículos comprados</h2>
     </div>
     <table class="table table-striped tabla_principal" id="articulosComp" cellpadding="0" cellspacing="0">
       <tbody>
         <tr *ngFor="let articulo of articulosComp; let odd = odd" [ngClass]="{odd:odd}">
           <td>
-            <ion-icon class="icono" name="arrow-undo" (click)='returnItemPurchased(articulo.id_articulo)'></ion-icon>
+            <ion-icon name="arrow-undo" (click)='returnItemPurchased(articulo.id_articulo)'></ion-icon>
           </td>
           <td>{{ articulo.name }}</td>
         </tr>

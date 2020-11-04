@@ -35,6 +35,14 @@ export class DespensaPage implements OnInit {
     console.log(articulo);
   }
 
+  addArt(articulo)
+  {
+  this.taskService.addArticleDesp(articulo)
+      .subscribe(data =>
+      {
+    });
+  }
+
   editar(articulo)
   {
     console.log(articulo);
