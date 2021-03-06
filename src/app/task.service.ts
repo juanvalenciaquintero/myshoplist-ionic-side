@@ -1,6 +1,5 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { isError } from 'util';
 //mport { Observable } from 'rxjs';
 
 
@@ -322,9 +321,9 @@ export class TaskService {
     return this.http.get(this.url + 'articulo/addArticle/' + articulo);
   }
 
-  getArticlesHistory(fecha)
+  getHistorico(fecha)
   {
-     return this.http.get(this.url + '/myshoplist.php?valor=8&fecha=' + fecha);
+    return this.http.get(this.url + '/lista/historicoFecha/' + fecha);
   }
 
   // test()

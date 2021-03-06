@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { TaskService } from './../task.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { TaskService } from './../task.service';
+
 
 @Component({
   selector: 'app-historico-detalle',
@@ -28,7 +27,7 @@ export class HistoricoDetallePage implements OnInit
   {
     this.fecha = this.rutaActiva.snapshot.params.fecha;
     console.log(this.fecha);
-    this.taskService.getArticlesHistory(this.fecha)
+    this.taskService.getHistorico(this.fecha)
       .subscribe(data =>
       {
         console.log(data);

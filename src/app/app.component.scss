@@ -58,10 +58,9 @@
   box-sizing: border-box;
   width:235px;
   margin:0 auto;
-
-  /* display:flex;
+  display:flex;
   align-items: center;
-  justify-content: center; */
+  justify-content: center;
 }
 
 #articulos, #articulosComp, #articulosDesp, #articulosHistorico
@@ -74,31 +73,52 @@
   padding:0;
   height:30px;
   width:175px;
+  display: inline-block;
 }
 
 
-#tablaArticulos, #tablaHistorico
+#tablaArticulos, #tablaHistorico, #articulos, #categorias
 {
   margin:0 auto;
   width: 100%;
+  margin-bottom:0;
 }
 
 #articulos tr, #tablaDespensa tr, #articulosDesp tr, #tablaHistorico tr
 {
   height:40px;
- // border: 1px solid;
 }
 
 #articulos td:first-child, #articulosComp td:first-child, #articulosDesp td:first-child,  #articulos td:last-child, #articulosDesp td:last-child
 {
   width:40px;
+  padding-left:10px;
 }
 
+#articulos td:nth-child(2)
+{
+  width:80%;
+  padding-left:10px;
+}
 
-#articulos td, #articulosComp td, #tablaDespensa td, #tablaHistorico td
+/* #articulos td:nth-child()
+{
+  width:70%;
+} */
+
+
+#articulosComp td
 {
   border-collapse: collapse;
   padding:10px 15px;
+  vertical-align: middle;
+}
+
+#articulos td, #tablaDespensa td, #tablaHistorico td,  #categorias td
+{
+  border-collapse: collapse;
+  padding:0;
+  vertical-align: middle;
 }
 
 #articulosDesp a
@@ -108,14 +128,15 @@
 
 #listaArticulos
 {
-position:absolute;
-top:100px;
+  position:absolute;
+  top:100px;
 }
 
 #btnAdd
 {
   height:29px;
   border: 1px solid #aaa;
+  display: inline-block;
 }
 
 .icono
@@ -156,6 +177,7 @@ top:100px;
 
 h2
 {
+  font-size: 1.5rem;
   padding:10px;
   width:85%;
   display:inline-block;
@@ -172,9 +194,10 @@ h2
 
   z-index:10;
   left:0;
+  top:92px;
   display:block;
-  border:1px solid #ccc;
-  background-color:#ececec;
+  border:4px solid #ccc;
+  background-color:#eae1e4;
   position: absolute;
   cursor:pointer;
   border-radius: 0 0 5px 5px;
@@ -195,6 +218,32 @@ h2
 .odd
 {
   background-color: rgb(232, 235, 236);
+}
+
+/* .odd2
+{
+  background-color: rgb(180, 229, 245);
+} */
+
+.borrar
+{
+width:20px;
+height:20px;
+background-image: url("/assets/borrar.png");
+background-repeat: no-repeat;
+background-position: center;
+background-size: 100%;
+display: inline-block;
+}
+
+#navegacion
+{
+  justify-content: flex-start;
+}
+
+#navegacion a
+{
+  margin-left:10px;
 }
 
 #articuloDespensa, #nuevoArticuloDespensa
@@ -236,7 +285,7 @@ h2
   width:100px;
   height:40px;
   border-radius: 3px;
-  font-size:15px;
+  font-size:12px;
 }
 
  #grabarPass,  #grabarUser
@@ -280,18 +329,158 @@ margin-right:10px;
   cursor:pointer;
 }
 
-.nombreArt
+.nombreArt, .fecha
 {
   text-decoration: none;
+  color:black;
 }
 
-.borrar
+.categorias
 {
-width:20px;
-height:20px;
-background-image: url("/assets/borrar.png");
-background-repeat: no-repeat;
-background-position: center;
-background-size: 100%;
-display:inline-block;
+  padding-left:10px;
+  font-weight: bold;
+}
+
+.cat0
+{
+  background-color:rgb(61, 203, 250);
+  color:white;
+}
+
+.cat1
+{
+  background-color:rgb(245, 137, 196);
+  color:white;
+}
+
+.cat2
+{
+  background-color:rgb(48, 202, 48);
+  color:white;
+}
+
+.cat3
+{
+  background-color:rgb(224, 124, 48);
+  color:white;
+}
+
+.cat4
+{
+  background-color:rgb(176, 241, 243);
+  color:black;
+}
+
+.cat5
+{
+  background-color:rgb(177, 10, 10);
+  color:white;
+}
+
+.cat6
+{
+  background-color:rgb(137, 12, 240);
+  color:white;
+}
+
+.cat7
+{
+  background-color:rgb(105, 96, 88);
+  color:white;
+}
+
+.cat8
+{
+  background-color:rgb(61, 203, 250);
+  color:white;
+}
+
+.cat9
+{
+  background-color:rgb(245, 137, 196);
+  color:white;
+}
+
+.cat10
+{
+  background-color:rgb(48, 202, 48);
+  color:white;
+}
+
+.cat11
+{
+  background-color:rgb(224, 124, 48);
+  color:white;
+}
+
+.cat12
+{
+  background-color:rgb(176, 241, 243);
+  color:black;
+}
+
+.cat13
+{
+  background-color:rgb(177, 10, 10);
+  color:white;
+}
+
+.cat14
+{
+  background-color:rgb(137, 12, 240);
+  color:white;
+}
+
+.cat15
+{
+  background-color:rgb(105, 96, 88);
+  color:white;
+}
+
+.cat16
+{
+  background-color:rgb(61, 203, 250);
+  color:white;
+}
+
+.cat17
+{
+  background-color:rgb(245, 137, 196);
+  color:white;
+}
+
+.cat18
+{
+  background-color:rgb(48, 202, 48);
+  color:white;
+}
+
+.cat19
+{
+  background-color:rgb(224, 124, 48);
+  color:white;
+}
+
+.cat20
+{
+  background-color:rgb(176, 241, 243);
+  color:black;
+}
+
+.cat21
+{
+  background-color:rgb(177, 10, 10);
+  color:white;
+}
+
+.cat22
+{
+  background-color:rgb(137, 12, 240);
+  color:white;
+}
+
+.cat23
+{
+  background-color:rgb(105, 96, 88);
+  color:white;
 }

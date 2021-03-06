@@ -24,7 +24,37 @@
   </div>
 
   <div id="tablaArticulos">
-    <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
+      <table class="table" id="categorias" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr *ngFor="let categoria of categorias | keyvalue, let indice = index" >
+        <td colSpan=4>
+          <div  class="categorias cat{{indice}}">{{ categoria.key }}</div>
+          <div>
+            <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
+              <tr *ngFor="let articulo of categoria.value, let odd = odd" [ngClass]="{odd:odd}">
+                <td>
+                  <ion-icon name="cart"   (click)='itemPurchased(articulo.id_art,articulo.cantidad)'></ion-icon>
+                </td>
+                <td><a routerLink="/editar/{{articulo.id_art}}" class="nombreArt">{{ articulo.art_name }}</a></td>
+                <td>
+                  <select (change)="actualizarQtty(articulo.id_art,$event.target.value);">
+
+                    <option *ngFor="let valor of valores" value="{{ valor }}" [selected]="valor==articulo.cantidad">{{
+                      valor }}</option>
+                  </select>
+                </td>
+                <td>
+                  <div class="borrar" (click)="deleteArtUnic(articulo.id_art,articulo.art_name);"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+    <!-- <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
       <tbody>
         <tr *ngFor="let articulo of articulos; let odd = odd" [ngClass]="{odd:odd}">
           <td>
@@ -40,7 +70,7 @@
           <td><div class="borrar" (click)="deleteArtUnic(articulo.id,articulo.name);"></div></td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
     <div id="comprados">
       <div class="borrar" (click)="deleteArt();"></div>

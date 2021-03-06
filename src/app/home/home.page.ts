@@ -1,8 +1,8 @@
-import { Articulo } from './../interfaces/articulo';
-import { Component, OnInit,OnDestroy,AfterViewInit } from '@angular/core';
-import { TaskService } from './../task.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { Articulo } from './../interfaces/articulo';
 import { StorageService } from './../services/storage.service';
+import { TaskService } from './../task.service';
 
 
 @Component({
@@ -13,6 +13,7 @@ import { StorageService } from './../services/storage.service';
 export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   articulos: any;
+  categorias: any = [];
   articulosComp: any;
   lista: string[];
   visible = false;
@@ -119,14 +120,50 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  getAllArticles() {
+  // getAllArticles() {
+  //   this.taskService.getAllArticles()
+  //   .subscribe(data => {
+  //     this.articulos = data;
+  //     console.log(this.articulos);
+  //   });
+
+  // }
+
+getAllArticles()
+  {
+
+    var categor = [];
+    var cats=[];
     this.taskService.getAllArticles()
-    .subscribe(data => {
-      this.articulos = data;
-      console.log(this.articulos);
-    });
+      .subscribe(data =>
+      {
+        this.articulos = data;
+        console.log(this.articulos);
+
+        this.articulos.forEach(element =>
+        {
+          cats.push(element['name']);
+        });
+        for (let i = cats.length-1; i>0; i--)
+        {
+          if(cats.indexOf(cats[i]) !== i) cats.splice(i,1);
+        }
+        cats.forEach(element =>
+        {
+           categor[element]=[];
+        });
+
+        console.log(categor);
+        this.articulos.forEach(element =>
+          {
+            categor[element['name']].push(element);
+          });
+        console.log(categor);
+        this.categorias=categor;
+      });
 
   }
+
 
   getAllArticlesPurchased() {
     this.taskService.getAllArticlesPurchased()
