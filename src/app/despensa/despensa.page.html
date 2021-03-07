@@ -5,27 +5,44 @@
     </ion-buttons>
     <ion-title>
       Despensa
-      <ion-icon name="add-circle" class="icono ion-float-right" [routerDirection]="'root'" [routerLink]="['../nuevo-articulo']"></ion-icon>
+      <ion-icon name="add-circle" class="icono ion-float-right" [routerDirection]="'root'"
+        [routerLink]="['../nuevo-articulo']"></ion-icon>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles">
     </ion-refresher-content>
   </ion-refresher>
   <div id="tablaDespensa">
-    <table class="table table-striped tabla_principal" id="articulosDesp" cellpadding="0" cellspacing="0">
+    <table class="table" id="categorias" cellpadding="0" cellspacing="0">
       <tbody>
-        <tr *ngFor="let articulo of articulosDespensa; let odd = odd" [ngClass]="{odd:odd}">
+        <tr *ngFor="let categoria of categorias | keyvalue, let indice = index">
+          <td colSpan=4>
+            <div class="categorias cat{{indice}}">{{ categoria.key }}</div>
+            <div>
+              <table class="table table-striped tabla_principal" id="articulosDesp" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr *ngFor="let articulo of categoria.value; let odd = odd" [ngClass]="{odd:odd}">
 
-         <td><ion-icon class="icono" name="arrow-redo" (click)='addArt(articulo.name);'></ion-icon></td>
-         <td><a routerLink="/editar/{{articulo.id}}" class="nombreArt">{{ articulo.name }}</a></td>
-         <td>{{ articulo.pasillo }}</td>
-         <td><div class="borrar"  (click)='borrar(articulo.id);'></div></td>
-      </tr>
-    </tbody>
+                    <td>
+                      <ion-icon class="icono" name="arrow-redo" (click)='addArt(articulo.name);'></ion-icon>
+                    </td>
+                    <td><a routerLink="/editar/{{articulo.id}}" class="nombreArt">{{ articulo.name }}</a></td>
+                    <td>{{ articulo.pasillo }}</td>
+                    <td>
+                      <div class="borrar" (click)='borrar(articulo.id);'></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
     </table>
 
   </div>

@@ -63,7 +63,7 @@
   justify-content: center;
 }
 
-#articulos, #articulosComp, #articulosDesp, #articulosHistorico
+#articulos, #articulosComp, #articulosDesp, #articulosHist, #articulosHistorico
 {
   width:100%;
 }
@@ -77,14 +77,14 @@
 }
 
 
-#tablaArticulos, #tablaHistorico, #articulos, #categorias
+#tablaArticulos, #tablaHistorico, #articulos, #categorias, #articulosHist, #articulosHistorico
 {
   margin:0 auto;
   width: 100%;
   margin-bottom:0;
 }
 
-#articulos tr, #tablaDespensa tr, #articulosDesp tr, #tablaHistorico tr
+#articulos tr, #tablaDespensa tr, #articulosDesp tr, #tablaHistorico tr, #articulosHist tr, #articulosHistorico tr
 {
   height:40px;
 }
@@ -92,6 +92,18 @@
 #articulos td:first-child, #articulosComp td:first-child, #articulosDesp td:first-child,  #articulos td:last-child, #articulosDesp td:last-child
 {
   width:40px;
+  padding-left:10px;
+}
+
+#articulosHist td:first-child
+{
+  width:80%;
+  padding-left:10px;
+}
+
+#articulosHistorico td:first-child
+{
+ width:50%;
   padding-left:10px;
 }
 
@@ -131,6 +143,14 @@
   position:absolute;
   top:100px;
 }
+
+.titulo
+{
+    height: 40px;
+    padding-left: 10px;
+    padding-top: 11px;
+}
+
 
 #btnAdd
 {

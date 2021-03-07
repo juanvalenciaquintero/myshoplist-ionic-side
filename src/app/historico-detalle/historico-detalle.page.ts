@@ -16,6 +16,7 @@ export class HistoricoDetallePage implements OnInit
   fecha: any;
   articulo: any;
   articulosHistorico: any;
+  comprador:any;
 
   constructor(public taskService: TaskService, private platform: Platform, private rutaActiva: ActivatedRoute, private router: Router)  {  }
 
@@ -32,6 +33,7 @@ export class HistoricoDetallePage implements OnInit
       {
         console.log(data);
         this.articulosHistorico = data;
+        this.comprador=this.articulosHistorico[0].nombre;
       });
 
   }
