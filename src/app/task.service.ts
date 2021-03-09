@@ -38,9 +38,9 @@ export class TaskService {
     return this.http.get(path);
   }
 
-  addArticleDesp(articulo)
+  addArticleDesp(articulo,usuario)
   {
-      let path = this.url + '/articulo/addToList/' + articulo;
+      let path = this.url + '/articulo/addToList/' + articulo  + '/' + usuario;
       return this.http.get(path);
   }
 

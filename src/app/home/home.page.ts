@@ -100,12 +100,13 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     var id: any;
     let seleccionado = <HTMLInputElement>document.getElementById('artic');
     console.log('addArticleDesp:' +  seleccionado.value);
-    this.taskService.addArticleDesp(seleccionado.value)
+    this.taskService.addArticleDesp(seleccionado.value,this.usuario )
       .subscribe(data =>
       {
         this.getAllArticles();
         this.getAllArticlesPurchased();
     });
+    seleccionado.value='';
   }
 
   addArt(articulo:number): void

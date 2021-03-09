@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { StorageService } from './../services/storage.service';
 import { TaskService } from './../task.service';
 
 @Component({
@@ -14,8 +15,9 @@ export class DespensaPage implements OnInit
   backButtonSubscription;
   @Input() articulosDespensa: any;
   categorias: any = [];
+  usuario: number;
 
-  constructor(public taskService: TaskService, private platform: Platform, private router: Router) { }
+  constructor(public storageService: StorageService,public taskService: TaskService, private platform: Platform, private router: Router) { }
 
   ngOnInit()
   {
@@ -63,7 +65,7 @@ export class DespensaPage implements OnInit
 
   addArt(articulo)
   {
-    this.taskService.addArticleDesp(articulo)
+    this.taskService.addArticleDesp(articulo,this.usuario )
       .subscribe(data =>
       {
       });
@@ -91,7 +93,7 @@ export class DespensaPage implements OnInit
   ngAfterViewInit()
   {
     this.getAllArticlesDespensa();
-
+    this.usuario = parseInt(this.storageService.getLocal('userId'));
     this.backButtonSubscription = this.platform.backButton.subscribe(() =>
     {
       this.router.navigate(['/home']);
