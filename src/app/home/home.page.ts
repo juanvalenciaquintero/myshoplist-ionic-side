@@ -8,9 +8,10 @@ import { TaskService } from './../task.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss','./../app.component.scss'],
+  styleUrls: ['home.page.scss', './../app.component.scss'],
 })
-export class HomePage implements OnInit, OnDestroy, AfterViewInit {
+export class HomePage implements OnInit, OnDestroy, AfterViewInit
+{
 
   articulos: any;
   categorias: any = [];
@@ -21,7 +22,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   usuario: number;
   articulo: Articulo;
   valores = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-  constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
+  constructor(public storageService: StorageService, public taskService: TaskService, private platform: Platform)
   {
     // this.test();
     //this.checkNew();
@@ -56,35 +57,34 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     let articulo = event.target.value;
     let listaArt: any = [];
     let datos: any;
-    // setTimeout(function ()
-    // {
-      //console.log(articulo);
-      if (articulo.length > 3)
-      {
-        this.taskService.checkArt(articulo)
+    if (articulo.length > 3)
+    {
+      this.taskService.checkArt(articulo)
         .subscribe(data =>
         {
-            datos = data;
-            console.log(data);
-            if (data !== 0)
+          datos = data;
+          console.log(data);
+          if (data !== 0)
+          {
+            console.log(datos.length);
+            for (var i = 0; i < datos.length; i++)
             {
-              console.log(datos.length);
-              for (var i = 0; i < datos.length; i++)
-              {
-                listaArt.push(datos[i]);
-                }
-              this.visible = true;
-            } else
-            {
-              this.visible = false;
+              listaArt.push(datos[i]);
             }
-          });
+            this.visible = true;
+          } else
+          {
+            this.visible = false;
+          }
+        });
+    } else
+    {
+      this.visible = false;
     }
     this.lista = listaArt;
-    // }, 200);
   }
 
-  selectArt(event:any)
+  selectArt(event: any)
   {
     let seleccionado = <HTMLInputElement>document.getElementById('artic');
     seleccionado.value = event.target.innerHTML;
@@ -99,17 +99,17 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     let artId: number;
     var id: any;
     let seleccionado = <HTMLInputElement>document.getElementById('artic');
-    console.log('addArticleDesp:' +  seleccionado.value);
-    this.taskService.addArticleDesp(seleccionado.value,this.usuario )
+    console.log('addArticleDesp:' + seleccionado.value);
+    this.taskService.addArticleDesp(seleccionado.value, this.usuario)
       .subscribe(data =>
       {
         this.getAllArticles();
         this.getAllArticlesPurchased();
-    });
-    seleccionado.value='';
+      });
+    seleccionado.value = '';
   }
 
-  addArt(articulo:number): void
+  addArt(articulo: number): void
   {
     console.log('Añadir a la lista artículo:' + articulo);
     this.taskService.addArticle(articulo)
@@ -130,11 +130,11 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
   // }
 
-getAllArticles()
+  getAllArticles()
   {
 
     var categor = [];
-    var cats=[];
+    var cats = [];
     this.taskService.getAllArticles()
       .subscribe(data =>
       {
@@ -145,39 +145,41 @@ getAllArticles()
         {
           cats.push(element['name']);
         });
-        for (let i = cats.length-1; i>0; i--)
+        for (let i = cats.length - 1; i > 0; i--)
         {
-          if(cats.indexOf(cats[i]) !== i) cats.splice(i,1);
+          if (cats.indexOf(cats[i]) !== i) cats.splice(i, 1);
         }
         cats.forEach(element =>
         {
-           categor[element]=[];
+          categor[element] = [];
         });
 
         console.log(categor);
         this.articulos.forEach(element =>
-          {
-            categor[element['name']].push(element);
-          });
+        {
+          categor[element['name']].push(element);
+        });
         console.log(categor);
-        this.categorias=categor;
+        this.categorias = categor;
       });
 
   }
 
 
-  getAllArticlesPurchased() {
+  getAllArticlesPurchased()
+  {
     this.taskService.getAllArticlesPurchased()
-    .subscribe(data => {
-      this.articulosComp = data;
-      console.log(this.articulosComp);
-    });
+      .subscribe(data =>
+      {
+        this.articulosComp = data;
+        console.log(this.articulosComp);
+      });
   }
 
-  itemPurchased(articulo,cantidad)
+  itemPurchased(articulo, cantidad)
   {
     console.log('Home.page.ts: ' + articulo + ' - ' + this.usuario);
-    this.taskService.updateArticle(articulo,cantidad,this.usuario)
+    this.taskService.updateArticle(articulo, cantidad, this.usuario)
       .subscribe(data =>
       {
         console.log(data);
@@ -189,13 +191,14 @@ getAllArticles()
   deleteArt()
   {
     this.taskService.deleteArticles()
-    .subscribe(data => {
-      this.getAllArticles();
-      this.getAllArticlesPurchased();
-    });
+      .subscribe(data =>
+      {
+        this.getAllArticles();
+        this.getAllArticlesPurchased();
+      });
   }
 
-  deleteArtUnic(articulo,nombre)
+  deleteArtUnic(articulo, nombre)
   {
     if (confirm("¿Quieres eliminar '" + nombre + "' de la lista?"))
     {
@@ -212,16 +215,17 @@ getAllArticles()
   {
     console.log('Anular: ' + articulo);
     this.taskService.returnItemPurchased(articulo)
-    .subscribe(data => {
-      this.getAllArticles();
-      this.getAllArticlesPurchased();
-    });
+      .subscribe(data =>
+      {
+        this.getAllArticles();
+        this.getAllArticlesPurchased();
+      });
   }
 
 
   ngAfterViewInit()
   {
-    this.backButtonSubscription = this.platform.backButton.subscribe(()=>
+    this.backButtonSubscription = this.platform.backButton.subscribe(() =>
     {
       navigator['app'].exitApp();
     });
@@ -247,10 +251,10 @@ getAllArticles()
       });
   }
 
-  actualizarQtty(articulo,cantidad)
+  actualizarQtty(articulo, cantidad)
   {
     console.log('Actualizar ' + articulo + ': ' + cantidad);
-    this.taskService.actualizarQtty(articulo,cantidad)
+    this.taskService.actualizarQtty(articulo, cantidad)
       .then(data =>
       {
         console.log(data);
